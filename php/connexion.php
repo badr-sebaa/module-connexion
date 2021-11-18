@@ -1,41 +1,8 @@
-
- <?php
-
-// je crée des variable pour chaque donné 
-$login = $_POST['login'];
-$password = $_POST['password'];
-
-        // CONNECTION ET SELECTION DE LA DB
-        $bdd  =mysqli_connect("localhost" , "root" ,"root","moduleconnexion");
-
-        // je récupere tout les utilisateurs 
-        $req = mysqli_query($bdd , "SELECT * FROM `utilisateurs`");
-        $res = mysqli_fetch_all($req);
-
-          // je test si les donnés sont entré
-          if(isset($_POST['submit'])){
-            // je test si le mot de passe et le login existe dans la db
-                foreach($res as $key => $value){
-                    foreach($value as $key2 => $value2){
-                        if($value2[2] == $login and $value[5] == $password){
-                            // je redirige vers la page index
-                            header('Location: ../index.php');
-                        }
-                        else{echo 'Mot de passe ou login incorrect ! ';}
-                    }
-                    
-                }
-                
-            
-        }
-
-?>
-
-
-
+  
  <!-- Head -->
 <head>
     <meta charset="utf-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/connexion.css">
 </head>
 
@@ -45,20 +12,53 @@ $password = $_POST['password'];
 <main>
 
 <div class="formstyle">
-    <h1>Connexion !</h1>
+    
+<?php 
+                if(isset($_GET['login_err']))
+                {
+                    $err = htmlspecialchars($_GET['login_err']);
 
-  <form action="../index.php" method="post">
+                    switch($err)
+                    {
+                        case 'password':
+                        ?>
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> mot de passe incorrect
+                            </div>
+                        <?php
+                        break;
+
+                        case 'email':
+                        ?>
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> email incorrect
+                            </div>
+                        <?php
+                        break;
+
+                        case 'already':
+                        ?>
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> compte non existant
+                            </div>
+                        <?php
+                        break;
+                    }
+                }
+                ?> 
+
+  <h1>Connexion !</h1>
+
+  <form action="connexion_traitement.php" method="post">
 
     <fieldset class="fieldset">
         
         <div class="champs">
-        <label for="login">Login:</label>
-        <input type="text" id="login" name="login"></input>
+        <input type="text" name="login" class="form-control" placeholder="Login" required="required" autocomplete="off">
         </div>
 
         <div class="champs">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password"></input>
+        <input type="password" name="password" class="form-control" placeholder="Password" required="required" autocomplete="off">
         </div>
 
         <div class="champs">

@@ -1,32 +1,8 @@
 
- <?php
-
-// je crée des variable pour chaque donné 
-$login = $_POST['login'];
-$firstname = $_POST['firstname'];
-$name = $_POST['name'];
-$password = $_POST['password'];
-
-        // CONNECTION ET SELECTION DE LA DB
-        $bdd  =mysqli_connect("localhost" , "root" ,"root","moduleconnexion");
-
-        // je test si les donnés sont entré
-        if(isset($_POST['submit'])){
-            // je test si le mot de passe et la verification sont les memes 
-            if($_POST['password'] == $_POST['verify']){ 
-                // j'ajoute les donnés a la bdd
-                $req = mysqli_query($bdd , "INSERT INTO `utilisateurs`(`login`, `prenom`, `nom`, `password`) VALUES ('$login','$firstname','$name','$password')");
-                // je redirige vers la page index
-                header('Location: ../index.php');
-            }
-        }
-?>
-
-
-
  <!-- Head -->
 <head>
     <meta charset="utf-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/inscription.css">
 </head>
 
@@ -36,39 +12,76 @@ $password = $_POST['password'];
 <main>
 
 <div class="formstyle">
+
+                <?php 
+                if(isset($_GET['reg_err']))
+                {
+                    $err = htmlspecialchars($_GET['reg_err']);
+
+                    switch($err)
+                    {
+                        case 'success':
+                        ?>
+                            <div class="alert alert-success">
+                                <strong>Succès</strong> inscription réussie !
+                            </div>
+                        <?php
+                        break;
+
+                        case 'password':
+                        ?>
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> mot de passe différent
+                            </div>
+                        <?php
+                        break;
+
+                        case 'pseudo_length':
+                        ?>
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> pseudo trop long
+                            </div>
+                        <?php 
+                        
+                        case 'already':
+                        ?>
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> compte deja existant
+                            </div>
+                        <?php 
+
+                    }
+                }
+                ?>
+
     <h1>Inscription !</h1>
 
-  <form action="#" method="post">
+  <form action="inscription_traitement.php" method="post">
 
     <fieldset class="fieldset">
         
         <div class="champs">
-        <label for="login">Login:</label>
-        <input type="text" id="login" name="login"></input>
+        <input type="text" name="login" class="form-control" placeholder="Login" required="required" autocomplete="off">
         </div>
 
         <div class="champs">
-        <label for="name">Nom:</label>
-        <input type="text" id="name" name="name"></input>
+        <input type="text" name="firstname" class="form-control" placeholder="FirstName" required="required" autocomplete="off">
         </div>
 
         <div class="champs">
-        <label for="firstname">Prénom:</label>
-        <input type="text" id="firstname" name="firstname"></input>
+        <input type="text" name="name" class="form-control" placeholder="Name" required="required" autocomplete="off">
         </div>
 
         <div class="champs">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password"></input>
+        <input type="text" name="password" class="form-control" placeholder="Password" required="required" autocomplete="off">
         </div>
         
         <div class="champs">
-        <label for="verify">Write your Password again:</label>
-        <input type="password" id="verify" name="verify"></input>
+        <input type="text" name="verify" class="form-control" placeholder="Type your password again" required="required" autocomplete="off">
         </div>
 
         <div class="champs">
-        <input type="submit" name='submit' value="Envoyer">
+        <input type="submit" name='submit' value="Inscription">
         </div>
     </fieldset>
 
