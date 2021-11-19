@@ -3,7 +3,7 @@
     $host = 'localhost';
     $dbname = 'moduleconnexion';
     $login = 'root';
-    $password = '';
+    $password = 'root';
 
     try 
     {
@@ -13,3 +13,4 @@
     {
         die('Erreur : '.$e->getMessage());
     }
+        

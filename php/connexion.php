@@ -54,11 +54,11 @@
     <fieldset class="fieldset">
         
         <div class="champs">
-        <input type="text" name="login" class="form-control" placeholder="Login" required="required" autocomplete="off">
+        <input type="text" name="login"  placeholder="Login" required="required" autocomplete="off">
         </div>
 
         <div class="champs">
-        <input type="password" name="password" class="form-control" placeholder="Password" required="required" autocomplete="off">
+        <input type="password" name="password"  placeholder="Password" required="required" autocomplete="off">
         </div>
 
         <div class="champs">

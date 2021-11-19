@@ -23,7 +23,7 @@
                 // Si le mot de passe est le bon
                 if(password_verify($password, $data['password']))
                 {
-                    header('Location: index.php');
+                    header('Location: ../index.php');
                     die();
                 }else{ header('Location: connexion_traitement.php?login_err=password'); die(); }
         }else{ header('Location: connexion_traitement.php?login_err=already'); die(); }

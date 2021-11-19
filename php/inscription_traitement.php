@@ -11,6 +11,7 @@ if(!empty($_POST['login']) && !empty($_POST['firstname']) && !empty($_POST['name
     $firstname = htmlspecialchars($_POST['firstname']);
     $name = htmlspecialchars($_POST['name']);
     $password = htmlspecialchars($_POST['password']);
+    $verify = htmlspecialchars($_POST['verify']);
 
      // On vérifie si l'utilisateur existe
      $check = $bdd->prepare('SELECT * password FROM utilisateurs WHERE login = ?');

@@ -1,5 +1,6 @@
 
  <!-- Head -->
+
 <head>
     <meta charset="utf-8">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
@@ -24,6 +25,7 @@
                         ?>
                             <div class="alert alert-success">
                                 <strong>Succès</strong> inscription réussie !
+                                <?php header('Location: connexion.php'); die(); ?>
                             </div>
                         <?php
                         break;
@@ -61,27 +63,27 @@
     <fieldset class="fieldset">
         
         <div class="champs">
-        <input type="text" name="login" class="form-control" placeholder="Login" required="required" autocomplete="off">
+        <input type="text" name="login"  placeholder="Login" required="required" autocomplete="off">
         </div>
 
         <div class="champs">
-        <input type="text" name="firstname" class="form-control" placeholder="FirstName" required="required" autocomplete="off">
+        <input type="text" name="firstname"  placeholder="FirstName" required="required" autocomplete="off">
         </div>
 
         <div class="champs">
-        <input type="text" name="name" class="form-control" placeholder="Name" required="required" autocomplete="off">
+        <input type="text" name="name"  placeholder="Name" required="required" autocomplete="off">
         </div>
 
         <div class="champs">
-        <input type="text" name="password" class="form-control" placeholder="Password" required="required" autocomplete="off">
+        <input type="password" name="password"  placeholder="Password" required="required" autocomplete="off">
         </div>
         
         <div class="champs">
-        <input type="text" name="verify" class="form-control" placeholder="Type your password again" required="required" autocomplete="off">
+        <input type="password" name="verify"  placeholder="Type your password again" required="required" autocomplete="off">
         </div>
 
         <div class="champs">
-        <input type="submit" name='submit' value="Inscription">
+        <input type="submit" name='submit' value="Inscription !">
         </div>
     </fieldset>
 
