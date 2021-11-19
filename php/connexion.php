@@ -28,14 +28,6 @@
                         <?php
                         break;
 
-                        case 'email':
-                        ?>
-                            <div class="alert alert-danger">
-                                <strong>Erreur</strong> email incorrect
-                            </div>
-                        <?php
-                        break;
-
                         case 'already':
                         ?>
                             <div class="alert alert-danger">
