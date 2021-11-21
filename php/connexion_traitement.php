@@ -23,8 +23,10 @@
                 // Si le mot de passe est le bon
                 if(password_verify($password, $data['password']))
                 {
-                    header('Location: ../index.php');
+                    // On créer la session et on redirige sur index.php
+                    $_SESSION['user'] = $data['id'];
+                    header('Location: index_co.php');
                     die();
-                }else{ header('Location: connexion_traitement.php?login_err=password'); die(); }
-        }else{ header('Location: connexion_traitement.php?login_err=already'); die(); }
-    }else{ header('Location: connexion_traitement.php'); die();} // si le formulaire est envoyé sans aucune données
+                }else{ header('Location: connexion.php?login_err=password'); die(); }
+        }else{ header('Location: connexion.php?login_err=already'); die(); }
+    }else{ header('Location: connexion.php'); die();} // si le formulaire est envoyé sans aucune données

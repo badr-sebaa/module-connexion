@@ -5,13 +5,13 @@ header{
 
 #titre{
     display: flex;
-    margin-left: 25%;
+    margin-left: 20%;
 }
 
 .connect{
-    width: 10%;
+    width: 20%;
     display: flex;      
-    justify-content: flex-end;
+    justify-content: space-around;
 }       
 
 
